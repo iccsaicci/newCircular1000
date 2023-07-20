@@ -88,9 +88,31 @@
         </BOUNDARYCONDITIONS>
         <!-- Specify the initial condition -->
         <FUNCTION NAME="InitialConditions">
-            <F VAR="u,v,w,p" FILE="circular1_13.rst" />
+            <F VAR="u,v,w,p" FILE="circular1_23.rst" />
         </FUNCTION>
     </CONDITIONS>
+    <COLLECTIONS>
+        <OPERATOR TYPE="BwdTrans">
+            <ELEMENT TYPE="R" ORDER="*" IMPTYPE="SumFac" />
+            <ELEMENT TYPE="H" ORDER="*" IMPTYPE="MatrixFree" />
+        </OPERATOR>
+        <OPERATOR TYPE="Helmholtz">
+            <ELEMENT TYPE="R" ORDER="*" IMPTYPE="MatrixFree" />
+            <ELEMENT TYPE="H" ORDER="*" IMPTYPE="MatrixFree" />
+        </OPERATOR>
+        <OPERATOR TYPE="IProductWRTBase">
+            <ELEMENT TYPE="R" ORDER="*" IMPTYPE="SumFac" />
+            <ELEMENT TYPE="H" ORDER="*" IMPTYPE="SumFac" />
+        </OPERATOR>
+        <OPERATOR TYPE="IProductWRTDerivBase">
+            <ELEMENT TYPE="R" ORDER="*" IMPTYPE="SumFac" />
+            <ELEMENT TYPE="H" ORDER="*" IMPTYPE="MatrixFree" />
+        </OPERATOR>
+        <OPERATOR TYPE="PhysDeriv">
+            <ELEMENT TYPE="R" ORDER="*" IMPTYPE="MatrixFree" />
+            <ELEMENT TYPE="H" ORDER="*" IMPTYPE="MatrixFree" />
+        </OPERATOR>
+    </COLLECTIONS>
     <Metadata>
         <Provenance>
             <GitBranch>refs/heads/master</GitBranch>
